@@ -3,6 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  //Ingresar su propia configuracion otorgada por firebase
+  // para realizar la configuracion del sitio y alacenamiento de datos
   production: false,
   firebase: {
     apiKey: "",
