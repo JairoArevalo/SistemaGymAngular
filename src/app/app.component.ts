@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { auth } from 'firebase'
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 
@@ -15,11 +16,13 @@ export class AppComponent {
   usuario: firebase.User
   cargando: boolean = true
 
-  constructor(public afAuth: AngularFireAuth) {
+  constructor(public afAuth: AngularFireAuth, private spinner: NgxSpinnerService) {
+    spinner.show()
     this.afAuth.user.subscribe((usuarioObservado)=>{
       setTimeout(() => {
         this.cargando = false
         this.usuario  = usuarioObservado
+        spinner.hide()
         
       }, 1100);
  

@@ -8,9 +8,7 @@
   <ng-template #showLogin>
     <div class="container" *ngIf="cargando">
       <div class="text-center">
-        ...
-        <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-        ...
+        <ngx-spinner bdColor = "rgba(207,207,207,0.8)" size = "large" color = "#000000" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Cargando ... </p></ngx-spinner>
       </div>
     </div>
     <app-login *ngIf="!cargando"></app-login>
