@@ -4,7 +4,7 @@ import * as firebase from 'firebase/app';
 import { auth } from 'firebase'
 import { NgxSpinnerService } from 'ngx-spinner';
 
-
+// Autentificacion y login con firebase
 
 @Component({
   selector: 'app-root',
