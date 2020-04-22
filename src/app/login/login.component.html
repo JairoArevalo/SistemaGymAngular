@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="text-center">      
+        <img src="/assets/centroLogin.jpg" alt="">      
+    </div>
+    <div class="card">
+        <div class="card-header">
+          Gym - Cuarentena Gym.
+    </div>
+    </div>
+    <div class="card">   <label class="card-header"> Login ! </label>   </div>
+    
+    <form [formGroup]="formularioLogin">
+        <div class="form-group">
+          <label >Email</label>
+          <input type="email" class="form-control" formControlName="correo" placeholder="@gmail.com">
+          <div *ngIf="formularioLogin.controls['correo'].invalid && formularioLogin.controls['correo'].dirty" class="alert alert-info" role="alert">
+            Se requiere ingresar un correo valido
+          </div>
+          <small id="emailHelp" class="form-text text-muted">No debe compartir su email o datos personales</small>
+        </div>
+        <div class="form-group">
+          <label >Contraseña</label>
+          <input (keyUp.enter)="ingresar()" type="password" class="form-control"  formControlName="password" >
+          <div *ngIf="formularioLogin.controls['password'].invalid && formularioLogin.controls['password'].dirty" class="alert alert-info" role="alert">
+            La contraseña es requerida, debe tener minimo 8 caracteres
+          </div>
+          
+        </div>
+        <div class="form-group form-check">
+          <div *ngIf="!valido" class="alert alert-info" role="alert">
+              {{textoError}}
+          </div>
+          
+        </div>
+        <button type="submit" [disabled]="formularioLogin.invalid" (click)="ingresar()" class="btn btn-primary">Ingresar</button>
+      </form>
+</div>  
+
+<ngx-spinner bdColor = "rgba(207,207,207,0.8)" size = "large" color = "#000000" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Cargando ... </p></ngx-spinner>

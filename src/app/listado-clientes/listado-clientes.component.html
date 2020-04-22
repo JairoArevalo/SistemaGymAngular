@@ -1,0 +1,36 @@
+<div class="container mt-3">
+    <h4 class="card-title"> Listado de Clientes</h4>
+    <div class="dropdown-divider"></div>
+    <form action="">
+        <div class="form-group">
+            <input type="email" class="form-control" placeholder="Buscar Cliente">
+            <small id="emailHelp" class="form-text text-muted">Ingresa el nombre del cliente</small>
+          </div>
+    </form>
+    
+    <div class="row">
+        <div class="col-sm-3" *ngFor="let cliente of clientes">
+            <div class="card mt-3" style="width: 15rem;">
+                <img [src]="cliente.imgUrl" class="card-img-top" alt="125px" height="150px" width="150px">
+                <div class="card-body">
+                  <h5 class="card-title">Nombre: {{cliente.nombre}} </h5>
+                  <div class="dropdown-divider"></div>
+                  <p class="card-text">ID:  {{cliente.id}} </p>
+                  <p class="card-text">Direccion {{cliente.direccion}} </p>
+                  <p class="card-text">Correo {{cliente.correo}} </p>
+                  <p class="card-text">Telefono {{cliente.telefono}} </p>
+                  <p class="card-text">Cedula : {{cliente.cedula}} </p>
+                  <div class="dropdown-divider"></div>
+                  <a [routerLink]="[ '/agregarClientes', cliente.id ]" class="btn btn-outline-info">Editar</a>
+                  
+                  <a href="#" class="btn btn-outline-danger">Desactivar</a>
+                </div>
+            </div>
+        </div>
+        
+
+    </div>
+
+</div>
+
+

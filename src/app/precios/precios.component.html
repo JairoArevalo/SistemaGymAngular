@@ -1,0 +1,76 @@
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-sm-8">
+            <h5 class="card-title">Precios Planes</h5>
+            <div class="dropdown-divider"></div>
+            
+            <ul class="list-group mt-5">
+                <li class="list-group-item mt-5" *ngFor="let precio of precios"> 
+                    <div class="card">
+                        <div class="dropdown-divider"></div>
+                        <div class="card text-center">
+                            <div class="card-header">
+                                Nombre Plan: {{precio.nombre}}
+                            </div>                        
+                            <div class="dropdown-divider"></div>
+                            <p class="card-title">Costo plan: {{precio.costo | currency: 'cop'}} </p>
+                            <div class="dropdown-divider"></div>
+                            <p class="card-title">Duracion Plan {{precio.duracion}} </p>
+                            <div class="dropdown-divider"></div>
+                            <p class="card-title"> Vigencia {{precio.vigencia}} dias</p>
+                            <div class="dropdown-divider"></div>
+                            <p class="card-title">idPlan {{precio.id}}  <button class="btn btn-warning" (click)="editarValores(precio)"> Editar</button> </p>
+                        </div>
+                    </div>
+                </li>
+                    <div class="dropdown-divider"></div>
+                    
+            </ul>
+        </div>
+        <div class="col-sm-4">
+            <h5 class="card-title">Agregar /editar </h5>
+            <div class="dropdown-divider"></div>
+            <form action="" [formGroup]="formularioPrecio">
+                <div class="form-group"  >
+                    <label >Nombre:</label>
+                    <input type="text" class="form-control" formControlName="nombre" placeholder="Ingrese nombre:">
+                    <small class="form-text text-muted">Nombre</small>
+                 
+                </div>
+                <div class="dropdown-divider"></div>
+                <div class="form-group" >
+                    <label >Costo:</label>
+                    <input type="number" class="form-control" formControlName="costo" placeholder="Ingrese Costo:">
+                    <small class="form-text text-muted">Costo</small>
+                 
+                </div>
+                <div class="dropdown-divider"></div>
+                <div class="form-group" >
+                    <label >Duracion:</label>
+                    <select name="" id="" formControlName="duracion" class="form-control">
+                        <option value="dia">Dia</option>
+                        <option value="semana">Semana</option>
+                        <option value="quincena">Quincena</option>
+                        <option value="mes">Mes</option>
+                        <option value="trimestre">Trimestre</option>
+                        <option value="semestre">Semestre</option>
+                        <option value="año">Año</option>
+                    </select>
+                    <small class="form-text text-muted">Duracion</small>
+                 
+                </div>
+                <div class="dropdown-divider"></div>
+                <div class="form-group" >
+                    <label >Dias de vigencia:</label>
+                    <input type="number" class="form-control" formControlName="vigencia" placeholder="Ingrese Vigencia del plan:">
+                    <small class="form-text text-muted">Vigencia</small>
+                 
+                </div>
+            </form>
+            <button *ngIf="!esEditar" class="btn btn-info" [disabled]="!formularioPrecio.valid" (click)="agregar()"> Agregar</button>
+            <button *ngIf="esEditar" class="btn btn-warning" [disabled]="!formularioPrecio.valid" (click)="editarPlan()"> Editar</button>
+        </div>
+    </div>
+</div>
+
+ 

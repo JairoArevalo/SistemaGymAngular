@@ -1,0 +1,85 @@
+<div class="container mt-3">
+    <form action="" [formGroup]="formularioCliente">
+    <div class="form-group" >
+        <label >Nombre:</label>
+        <input type="text" class="form-control" formControlName="nombre" placeholder="Ingrese nombre:">
+        <small class="form-text text-muted">Nombre Completo.</small>
+            <div *ngIf="formularioCliente.controls['nombre'].invalid && formularioCliente.controls['nombre'].dirty" class="alert alert-info" role="alert">
+                 El nombre es requerido
+            </div>
+    </div>
+    <div class="dropdown-divider"></div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label >Cedula:</label>
+                <input type="text" class="form-control" formControlName="cedula" placeholder="Ingrese numero de identificacion:">
+                <small class="form-text text-muted">N° de identificacion.</small>
+                <div *ngIf="formularioCliente.controls['cedula'].invalid && formularioCliente.controls['cedula'].dirty" class="alert alert-info" role="alert">
+                    La cedula es requerida
+               </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label >Celular: </label>
+                <input type="tel" class="form-control" formControlName="telefono" placeholder="Ingrese numero de contacto:">
+                <small class="form-text text-muted">Numero de contacto.</small>
+                    <div *ngIf="formularioCliente.controls['telefono'].invalid && formularioCliente.controls['telefono'].dirty" class="alert alert-info"  role="alert">
+                        El telefono es requerido
+                    </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="dropdown-divider"></div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label >Correo:</label>
+                <input type="email" class="form-control" formControlName="correo" placeholder="@gmail.com:">
+                <small class="form-text text-muted">correo @.</small>
+                    <div *ngIf="formularioCliente.controls['correo'].invalid && formularioCliente.controls['correo'].dirty" class="alert alert-info" role="alert">
+                    Se requiere ingresar un correo valido
+                    </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group " >
+                <label >Direccion: </label>
+                <input type="text" class="form-control" formControlName="direccion" placeholder="Ingrese Direccion:">
+                <small class="form-text text-muted">Direccion.</small>
+                <div *ngIf="formularioCliente.controls['direccion'].invalid && formularioCliente.controls['direccion'].dirty " class="alert alert-info" role="alert">
+                    La direccion es requerida
+               </div>
+            </div>
+        </div>
+    </div>
+    <div class="dropdown-divider"></div>
+    
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label >Fecha de nacimiento:</label>
+                <input type="date" class="form-control" formControlName="fechaNacimiento"  placeholder="Ingrese fecha de nacimiento:">
+                <small class="form-text text-muted">Fecha nacimiento.</small>
+                <div *ngIf="formularioCliente.controls['fechaNacimiento'].invalid && formularioCliente.controls['fechaNacimiento'].dirty" class="alert alert-info" role="alert">
+                    La fecha es requerida
+               </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label >Imagen o foto: </label>
+                <input type="file" (change)="subirImagen($event)" class="form-control-file" id="FormControlFile" formControlName="imgUrl" >
+                <small class="form-text text-muted">foto.</small>
+                <progressbar max="100" [value]="porcentajeSubida" type="info" [striped]="true" [animate]="true"><i> {{porcentajeSubida}}% / 100%</i></progressbar>
+            </div>
+        </div>
+    </div>
+    <div class="dropdown-divider"></div>
+    
+    <button *ngIf="!esEditable" class="btn btn-success" [disabled]="!formularioCliente.valid " (click)="agregar()"> Agregar</button>
+    <button *ngIf="esEditable" class="btn btn-success"  (click)="editar()"> Editar</button>
+    </form>
+</div>
